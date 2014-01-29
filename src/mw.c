@@ -449,6 +449,16 @@ void loop(void)
                 break;
         }
     }
+	
+	// use scheduler
+	if ( rcReady )
+	{
+		triggerTask(TASK_RC);
+	}
+	
+	schedulerTick();
+	
+	//
 
     if (((int32_t)(currentTime - rcTime) >= 0) || rcReady) { // 50Hz or data driven
         rcReady = false;
